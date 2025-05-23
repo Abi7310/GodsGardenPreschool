@@ -1,6 +1,20 @@
 import React from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const Gallery: React.FC = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const isGalleryPage = location.pathname === '/gallery';
+
+  const handleGalleryClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (isGalleryPage) {
+      window.location.href = '/#gallery';
+    } else {
+      window.scrollTo(0, 0);
+      navigate('/gallery');
+    }
+  };
   const images = [
     {
       url: "https://images.pexels.com/photos/8613089/pexels-photo-8613089.jpeg",
@@ -35,9 +49,31 @@ const Gallery: React.FC = () => {
           <h2 className="text-3xl md:text-4xl font-bold text-secondary mb-4">
             Life at GodsGarden
           </h2>
-          <p className="text-xl text-secondary/80">
+          <p className="text-xl text-secondary/80 mb-6">
             Glimpses of joy, learning, and growth in our preschool
           </p>
+          {isGalleryPage ? (
+            <Link 
+              to="/" 
+              className="inline-flex items-center text-white hover:text-primary-light font-medium text-lg transition-colors"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-1 rotate-180" viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+              </svg>
+              Back to Home
+            </Link>
+          ) : (
+            <a 
+              href="/gallery" 
+              onClick={handleGalleryClick}
+              className="inline-flex items-center text-yellow-400 font-medium text-xl group cursor-pointer"
+            >
+              View All Photos
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7 ml-2" viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+              </svg>
+            </a>
+          )}
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

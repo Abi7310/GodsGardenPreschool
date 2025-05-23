@@ -10,14 +10,14 @@ const Purpose: React.FC = () => {
             <img
               src="https://images.pexels.com/photos/8613335/pexels-photo-8613335.jpeg"
               alt="Kangaroo reading"
-              className="w-full h-auto rounded-3xl"
+              className="w-full h-auto max-w-[600px] max-h-[400px] rounded-3xl object-cover"
             />
           </div>
           
           <div>
             <div className="mb-6">
               <h2 className="text-4xl font-bold mb-2">
-                Our <span className="text-purple-700">Purpose</span>
+                Our <span className="text-gray-900">Purpose</span>
               </h2>
               <div className="w-20 h-2 bg-yellow-400"></div>
             </div>

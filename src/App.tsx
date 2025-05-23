@@ -11,6 +11,7 @@ import Testimonials from './components/Testimonials';
 import Branches from './components/Branches';
 import Footer from './components/Footer';
 import ProgramsPage from './pages/ProgramsPage';
+import GalleryPage from './pages/GalleryPage';
 
 function App() {
   useEffect(() => {
@@ -38,7 +39,16 @@ function App() {
       document.removeEventListener('click', handleAnchorClick);
     };
   }, []);
-  
+
+  useEffect(() => {
+    if (location.pathname === '/' && location.hash === '#gallery') {
+      const gallerySection = document.getElementById('gallery');
+      if (gallerySection) {
+        gallerySection.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  }, [location]);
+
   return (
     <Router>
       <div className="min-h-screen bg-white">
@@ -51,8 +61,8 @@ function App() {
                 <About />
                 <Programs />
                 <Purpose />
-                <Advantages />
                 <Gallery />
+                <Advantages />
                 <Testimonials />
                 <Branches />
               </main>
@@ -61,6 +71,7 @@ function App() {
           } />
           <Route path="/programs" element={<ProgramsPage />} />
           <Route path="/programs/:programId" element={<ProgramsPage />} />
+          <Route path="/gallery" element={<GalleryPage />} />
         </Routes>
       </div>
     </Router>

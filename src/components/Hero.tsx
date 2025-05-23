@@ -49,7 +49,7 @@ const Hero: React.FC = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <button className="bg-primary hover:bg-primary-dark text-secondary px-8 py-4 rounded-full font-medium text-lg transition-colors flex items-center justify-center group font-display">
-              Schedule a Tour
+              Contact Us
               <Star className="ml-2 h-5 w-5 group-hover:rotate-45 transition-transform" />
             </button>
             <button className="border-2 border-primary text-primary hover:bg-primary/10 px-8 py-4 rounded-full font-medium text-lg transition-colors font-display">

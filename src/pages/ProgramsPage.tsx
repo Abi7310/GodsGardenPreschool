@@ -209,13 +209,13 @@ const ProgramsPage: React.FC = () => {
 
         <div className="container mx-auto px-4 md:px-6">
           <div className="mb-12">
-            <Link 
-              to="/" 
+            <button 
+              onClick={() => window.history.back()}
               className="inline-flex items-center text-white hover:text-primary-light transition-colors group"
             >
               <ArrowLeft className="h-5 w-5 mr-2 transform group-hover:-translate-x-1 transition-transform" />
-              <span className="text-lg">Back to Home</span>
-            </Link>
+              <span className="text-lg">Back</span>
+            </button>
           </div>
 
           {selectedProgram ? (
@@ -275,9 +275,12 @@ const ProgramsPage: React.FC = () => {
           ) : (
             <>
               <div className="text-center mb-12">
-                <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 font-display">
-                  Our Programs
+                <h1 className="text-4xl md:text-5xl font-bold text-primary mb-4 font-display">
+                  Nurturing Minds, Growing Hearts
                 </h1>
+                <p className="text-xl text-secondary/90 max-w-2xl mx-auto text-center mb-8">
+                  At God's Garden Preschool, we believe in creating a nurturing environment where children can learn, grow, and thrive. Our programs are carefully designed to foster curiosity, creativity, and confidence in young minds while instilling strong values and a love for learning.
+                </p>
                 <div className="w-24 h-1.5 bg-primary mx-auto rounded-full"></div>
               </div>
               
