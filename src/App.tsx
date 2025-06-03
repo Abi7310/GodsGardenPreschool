@@ -12,6 +12,8 @@ import Branches from './components/Branches';
 import Footer from './components/Footer';
 import ProgramsPage from './pages/ProgramsPage';
 import GalleryPage from './pages/GalleryPage';
+import Achievements from './components/Achievements';
+import AchievementsPage from './pages/AchievementsPage';
 
 function App() {
   useEffect(() => {
@@ -60,6 +62,7 @@ function App() {
                 <Hero />
                 <About />
                 <Programs />
+                <Achievements />
                 <Purpose />
                 <Gallery />
                 <Advantages />
@@ -72,6 +75,7 @@ function App() {
           <Route path="/programs" element={<ProgramsPage />} />
           <Route path="/programs/:programId" element={<ProgramsPage />} />
           <Route path="/gallery" element={<GalleryPage />} />
+          <Route path="/achievements" element={<AchievementsPage />} />
         </Routes>
       </div>
     </Router>

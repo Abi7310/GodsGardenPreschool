@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useParams, useNavigate } from 'react-router-dom';
-import { ArrowLeft, Calendar, Clock, Users, Target, BookOpen, Palette, X, ChevronUp } from 'lucide-react';
+import { useParams, useNavigate } from 'react-router-dom';
+import { ArrowLeft, Calendar, Clock, Users, Target, X, ChevronUp } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import styles from './ProgramCard.module.css';
@@ -197,25 +197,30 @@ const ProgramsPage: React.FC = () => {
     <div className="min-h-screen bg-gradient-to-b from-secondary via-secondary/95 to-secondary/90">
       <Header />
       <main className="pt-24 pb-20 relative">
-        <button
-          onClick={scrollToTop}
-          className={`fixed bottom-8 right-8 p-4 bg-primary text-white rounded-full shadow-lg hover:bg-primary-dark transition-all transform hover:scale-110 ${
-            showScrollTop ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'
-          } z-50`}
-          aria-label="Scroll to top"
-        >
-          <ChevronUp className="h-6 w-6" />
-        </button>
-
         <div className="container mx-auto px-4 md:px-6">
+          <button
+            onClick={scrollToTop}
+            className={`fixed bottom-8 right-8 p-4 bg-primary text-white rounded-full shadow-lg hover:bg-primary-dark transition-all transform hover:scale-110 ${
+              showScrollTop ? 'opacity-100' : 'opacity-0 pointer-events-none'
+            }`}
+            aria-label="Scroll to top"
+          >
+            <ChevronUp className="w-6 h-6" />
+          </button>
+
           <div className="mb-12">
             <button 
               onClick={() => window.history.back()}
-              className="inline-flex items-center text-white hover:text-primary-light transition-colors group"
+              className="inline-flex items-center text-white hover:text-primary-light transition-colors group mb-8"
             >
               <ArrowLeft className="h-5 w-5 mr-2 transform group-hover:-translate-x-1 transition-transform" />
               <span className="text-lg">Back</span>
             </button>
+            <div className="text-center">
+              <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 font-display">
+                Our <span className="text-primary">Programs</span>
+              </h1>
+            </div>
           </div>
 
           {selectedProgram ? (
@@ -274,15 +279,7 @@ const ProgramsPage: React.FC = () => {
             </div>
           ) : (
             <>
-              <div className="text-center mb-12">
-                <h1 className="text-4xl md:text-5xl font-bold text-primary mb-4 font-display">
-                  Nurturing Minds, Growing Hearts
-                </h1>
-                <p className="text-xl text-secondary/90 max-w-2xl mx-auto text-center mb-8">
-                  At God's Garden Preschool, we believe in creating a nurturing environment where children can learn, grow, and thrive. Our programs are carefully designed to foster curiosity, creativity, and confidence in young minds while instilling strong values and a love for learning.
-                </p>
-                <div className="w-24 h-1.5 bg-primary mx-auto rounded-full"></div>
-              </div>
+              <div className="mb-12"></div>
               
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {programs.map((program) => (
