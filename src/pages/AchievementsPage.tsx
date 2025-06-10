@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaArrowLeft, FaTrophy, FaAward, FaGraduationCap, FaHeart, FaHandsHelping, FaChild, FaBookOpen } from 'react-icons/fa';
 import Header from '../components/Header';
@@ -18,6 +18,11 @@ const AchievementsPage: React.FC = () => {
   const navigate = useNavigate();
   const [flippedCard, setFlippedCard] = useState<number | null>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
+
+  // Scroll to top when component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const nextImage = (e: React.MouseEvent, achievementId: number) => {
     e.stopPropagation();
@@ -155,18 +160,20 @@ const AchievementsPage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <Header />
+      <Header bgColor="bg-green-900/90" textColor="text-white" />
       <div className="container mx-auto px-4 py-12 pt-24">
-        <button 
-          onClick={() => navigate(-1)}
-          className="flex items-center text-primary hover:text-primary-dark mb-8 transition-colors"
-        >
-          <FaArrowLeft className="mr-2" /> Back
-        </button>
-
-        <h1 className="text-4xl font-bold text-gray-900 mb-12 text-center">
-          Our <span className="text-primary">Achievements</span>
-        </h1>
+        <div className="flex items-center justify-between mb-12">
+          <button 
+            onClick={() => navigate(-1)}
+            className="flex items-center text-primary hover:text-primary-dark transition-colors px-4 py-2 rounded-lg hover:bg-gray-100"
+          >
+            <FaArrowLeft className="mr-2" /> Back
+          </button>
+          <h1 className="text-4xl font-bold text-gray-900 text-center">
+            Our <span className="text-primary">Achievements</span>
+          </h1>
+          <div className="w-24"></div> {/* Spacer to balance the flex layout */}
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {achievements.map((achievement) => (
